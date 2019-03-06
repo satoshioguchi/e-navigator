@@ -9,13 +9,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
   
   def index
-    @users = User.all
+    if user_signed_in?
+      @users = User.all
+    else
+      render 'top_page'
+    end
   end
   
   def profile_update
     current_user.assign_attributes(account_update_params)
     if current_user.save
-	  redirect_to action: :index
+	    redirect_to action: :index
     else
       render "profile_edit"
     end
@@ -79,23 +83,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   private
     def sign_up_params
-    params.require(:user).permit( :username,
-                                  :birthdate,
-                                  :gender,
-                                  :school,
-                                  :email,
-                                  :password,
-                                  :password_confirmation)
+      params.require(:user).permit(
+        :email,
+        :password,
+        :password_confirmation)
     end
     
     def account_update_params
-    params.require(:user).permit( :username,
-                                  :birthdate,
-                                  :gender,
-                                  :school,
-                                  :email,
-                                  :password,
-                                  :password_confirmation)
+      params.require(:user).permit(
+        :username,
+        :birthdate,
+        :gender,
+        :school,
+        :email,
+        :password,
+        :password_confirmation)
     end
-  
 end
