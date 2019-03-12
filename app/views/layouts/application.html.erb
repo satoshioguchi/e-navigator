@@ -13,13 +13,13 @@
             <nav>
                 <strong><%= link_to "e-Navigator", index_path %></strong>
                 <% if user_signed_in? %>
-                <%= link_to 'プロフィール', profile_edit_path(current_user.id) %>
-                <%= link_to '自分の面接一覧' %>
-                <%= link_to 'メール' %>
-                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-            <% else %>
-                <%= link_to 'サインアップ', new_user_registration_path %>
-                <%= link_to 'ログイン', new_user_session_path %>
+                  <%= link_to 'プロフィール', profile_edit_path(current_user.id) %>
+                  <%= link_to '自分の面接一覧' %>
+                  <%= link_to 'メール' %>
+                  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                <% else %>
+                  <%= link_to 'サインアップ', new_user_registration_path %>
+                  <%= link_to 'ログイン', new_user_session_path %>
                 <% end %>
             </nav>
         </header>
