@@ -17,9 +17,9 @@
            </td>
            <td>
              <% if user.birthdate.present? %>
-             <%= (Date.today.strftime('%Y%m%d').to_i - user.birthdate.strftime('%Y%m%d').to_i) / 10000%>
+               <%= (Date.today.strftime('%Y%m%d').to_i - user.birthdate.strftime('%Y%m%d').to_i) / 10000%>
              <% else %>
-             <% nil %>
+               <% nil %>
              <% end %>
            </td>
            <td>
