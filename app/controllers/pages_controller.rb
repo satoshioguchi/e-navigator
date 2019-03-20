@@ -1,14 +1,7 @@
 class PagesController < ApplicationController
   
   def index
-    if user_signed_in?
-      @users = User.all
-    else
-      render 'top_page'
-    end
-  end
-  
-  def show
+    @users = User.all
   end
   
   def profile_edit
@@ -29,7 +22,8 @@ class PagesController < ApplicationController
       params.require(:user).permit(
         :email,
         :password,
-        :password_confirmation)
+        :password_confirmation,
+        )
     end
     
     def account_update_params
@@ -40,6 +34,7 @@ class PagesController < ApplicationController
         :school,
         :email,
         :password,
-        :password_confirmation)
+        :password_confirmation,
+        )
     end
 end
