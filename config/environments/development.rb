@@ -31,7 +31,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
   
-  config.action_mailer.default_url_options = { host: '580e8e2020364a97b7c5ba30541fbc63.vfs.cloud9.ap-southeast-1.amazonaws.com'}
+  config.action_mailer.default_url_options = { host: '580e8e2020364a97b7c5ba30541fbc63.vfs.cloud9.ap-southeast-1.amazonaws.com' }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
