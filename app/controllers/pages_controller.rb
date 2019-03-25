@@ -10,12 +10,11 @@ class PagesController < ApplicationController
   def profile_update
     current_user.assign_attributes(account_update_params)
     if current_user.save
-	  redirect_to action: :index
+      redirect_to action: :index
     else
       render "profile_edit"
     end
   end
-  
   
   private
     def sign_up_params
