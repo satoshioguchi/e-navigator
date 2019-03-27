@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
   
   def update
+    @user = User.find(params[:id])
     if current_user.update_attributes(account_update_params)
       flash[:success] = "保存しました"
       redirect_to action: :index
