@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     end
   end
   
+  def interviews
+    @user = User.find(params[:id])
+  end
+  
   private
     def sign_up_params
       params.require(:user).permit(
