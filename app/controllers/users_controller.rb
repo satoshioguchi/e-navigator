@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   
   def update
     if current_user.update_attributes(account_update_params)
+      flash[:success] = "保存しました"
       redirect_to action: :index
     else
       render "profile_edit"
