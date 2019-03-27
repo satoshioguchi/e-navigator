@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       flash[:success] = "保存しました"
       redirect_to action: :index
     else
-      render "profile_edit"
+      render "edit"
     end
   end
   
