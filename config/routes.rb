@@ -1,16 +1,11 @@
 Rails.application.routes.draw do
-  get 'interviews/index'
-
-  get 'interviews/new'
-
-  get 'interviews/edit'
-
   root 'users#index', as: 'index'
   devise_for :users
   resources  :users, only: [:index, :edit, :update] do
     member do
-      get :interviews
+      get :interviews, to: 'interviews#index'
     end
   end
+  resources :interviews, except: :index
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
