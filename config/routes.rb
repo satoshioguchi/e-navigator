@@ -6,6 +6,6 @@ Rails.application.routes.draw do
       get :interviews, to: 'interviews#index'
     end
   end
-  resources :interviews, except: :index
+  resources :interviews, except: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
