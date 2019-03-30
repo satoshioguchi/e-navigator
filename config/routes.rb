@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'interviews/index'
+
+  get 'interviews/new'
+
+  get 'interviews/edit'
+
   root 'users#index', as: 'index'
   devise_for :users
   resources  :users, only: [:index, :edit, :update] do
