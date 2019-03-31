@@ -14,6 +14,12 @@
         <td>
           <%= interview.propriety %>
         </td>
+        <td>
+          <%= link_to '編集', edit_interview_path(current_user) %>
+        </td>
+        <td>
+          <%= link_to '削除', '#' %>
+        </td>
       </tr>
       <% end %>
     </tbody>
