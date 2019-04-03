@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources  :users, only: [:index, :edit, :update] do
     member do
-      get :interviews, to: 'interviews#index'
+      resources :interviews, except: [:show]
     end
   end
-  resources :interviews, except: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
