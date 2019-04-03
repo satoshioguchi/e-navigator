@@ -5,9 +5,16 @@ class InterviewsController < ApplicationController
   end
 
   def new
+    @interview = Interview.new
   end
   
   def create
+    @interview = current_user.interviews.build(interview_params)
+    if @interview.save
+      redirect_to interviews_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -18,4 +25,10 @@ class InterviewsController < ApplicationController
   
   def destroy
   end
+  
+  private
+  
+    def interview_params
+      params.require(:interview).permit(:schedule)
+    end
 end
