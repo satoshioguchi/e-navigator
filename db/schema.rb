@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20190330114625) do
   enable_extension "plpgsql"
 
   create_table "interviews", force: :cascade do |t|
-    t.time "schedule"
+    t.datetime "schedule"
     t.integer "propriety"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
