@@ -24,5 +24,6 @@
       <% end %>
     </tbody>
   </table>
-  
+  <% if @user == current_user %>
   <%= link_to '新規面接作成', new_interview_path %>
+  <% end %>
