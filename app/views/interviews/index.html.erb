@@ -14,16 +14,20 @@
         <td>
           <%= interview.propriety %>
         </td>
-        <td>
-          <%= link_to '編集', edit_interview_path(current_user) %>
-        </td>
-        <td>
-          <%= link_to '削除', '#' %>
-        </td>
+        <% if @user == current_user %>
+          <td class="btn-top-radius">
+            <%= link_to '編集', edit_interview_path(current_user) %>
+          </td>
+          <td class="btn-top-radius">
+            <%= link_to '削除', '#' %>
+          </td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
+  <div class="btn-sf-like">
   <% if @user == current_user %>
     <%= link_to '新規面接作成', new_interview_path %>
   <% end %>
+  </div>
