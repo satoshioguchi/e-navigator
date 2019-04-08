@@ -15,11 +15,6 @@
   transition: .4s;
 }
 
-.btn-top-radius:hover {
-  background: #ffc25c;
-  color: #FFF;
-}
-
 .btn-sf-like {
   position: relative;
   display: inline-block;
@@ -32,12 +27,9 @@
   border-top: solid 3px #00a3d4;
   border-bottom: solid 3px #00a3d4;
   transition: .4s;
-  text-align: right;
 }
 
 .btn-sf-like:hover {
   text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83),
                6px 0px 15px rgba(255, 255, 240, 0.83);
-               text-align: right;
 }
-
