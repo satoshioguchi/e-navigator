@@ -1,4 +1,4 @@
-<%= form_for @interview do |f| %>
+<%= form_for @interview, url: { :controller => :interviews, :action => :create } do |f| %>
 
 <h1>新規面接作成</h1>
 
