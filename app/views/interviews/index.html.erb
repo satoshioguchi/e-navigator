@@ -16,10 +16,15 @@
         </td>
         <% if @user == current_user %>
           <td class="btn-top-radius">
-            <%= link_to '編集', edit_interview_path(current_user) %>
+            <% if interview.propriety == "保留" %>
+              <%= link_to '編集', edit_user_interview_path(@user, interview)%>
+            <% end%>
           </td>
           <td class="btn-top-radius">
-            <%= link_to '削除', '#' %>
+            <% if interview.propriety == "保留" %>
+              <%= link_to '削除', user_interview_path(@user, interview), method: :delete,
+              data: { confirm: '本当に削除しますか？' } %>
+            <% end %>
           </td>
         <% end %>
       </tr>
@@ -28,6 +33,6 @@
   </table>
   <div class="btn-sf-like">
   <% if @user == current_user %>
-    <%= link_to '新規面接作成', new_interview_path %>
+    <%= link_to '新規面接作成', new_user_interview_path %>
   <% end %>
   </div>
