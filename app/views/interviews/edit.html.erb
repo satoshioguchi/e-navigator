@@ -1,2 +1,15 @@
-<h1>Interviews#edit</h1>
-<p>Find me in app/views/interviews/edit.html.erb</p>
+<%= form_for @interview, url: { :controller => :interviews, :action => :update } do |f| %>
+
+<h1>面接編集</h1>
+
+  <div class="field">
+    <%= f.label :開始時間 %><br />
+    <%= f.datetime_select(
+        :schedule
+        ) %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
