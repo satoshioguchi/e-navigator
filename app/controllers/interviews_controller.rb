@@ -32,7 +32,7 @@ class InterviewsController < ApplicationController
   end
   
   def update
-    @interview = Interview.find_by(user_id: current_user.id)
+    @interview = Interview.find_by(user_id: params[:user_id], id: params[:id])
     if @interview.update_attributes(interview_params)
       flash[:success] = "面接が更新されました"
       redirect_to controller: 'interviews', action: 'show'
@@ -46,6 +46,19 @@ class InterviewsController < ApplicationController
     @interview.destroy
     flash[:success] = "面接が削除されました"
     redirect_to controller: 'interviews', action: 'index'
+  end
+  
+  def approve
+    @interviews = Interview.where(user_id: params[:user_id])
+    @interviews.map { |interview| interview.update_attributes(propriety: 1) }
+    @interview = Interview.find_by(user_id: params[:user_id], id: params[:interview_id])
+    if @interview.schedule > DateTime.now && @interview.update_attributes(propriety: 2)
+      flash[:success] = "面接が更新されました"
+      redirect_to controller: 'interviews', action: 'show', user_id: params[:user_id], id: params[:interview_id]
+    else
+      flash[:danger] = "開始時間は未来の時間を指定してください"
+      redirect_to controller: 'interviews', action: 'edit', user_id: params[:user_id], id: params[:interview_id]
+    end
   end
   
   private
