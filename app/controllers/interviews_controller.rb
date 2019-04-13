@@ -3,6 +3,10 @@ class InterviewsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @interviews = Interview.where(user_id: params[:user_id])
+    @approval_interview = Interview.where(user_id: params[:user_id]).find_by(propriety: 2)
+    if current_user.id != @user.id
+      render "other_user_interview_schedule"
+    end
   end
   
   def show
