@@ -9,7 +9,9 @@
     <% @interviews.each do |interview| %>
     <tr>
       <td>
-        <%= interview.schedule.strftime("%Y年%m月%d日 %H時%M分") %>
+        <%= link_to interview.schedule.strftime("%Y年%m月%d日 %H時%M分"),
+        user_interview_approve_path(@user, interview), method: :patch,
+        data: { confirm: "#{interview.schedule.strftime("%Y年%m月%d日 %H時%M分")}で面接を確定していいですか？" } %>
       </td>
     </tr>
     <% end %>
