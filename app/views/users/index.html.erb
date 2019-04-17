@@ -30,6 +30,13 @@
                <%= user.school %>
              </td>
              <td>
+               <% user.interviews.each do |interview| %>
+                 <% if interview.propriety == "承認" %>
+                   <%= interview.schedule.strftime("%Y年%m月%d日 %H時%M分") %>
+                 <% end %>
+               <% end %>
+             </td>
+             <td>
                <%= link_to '面接一覧', user_interviews_path(user.id) %>
              </td>
            </tr>
