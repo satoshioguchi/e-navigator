@@ -1,14 +1,11 @@
-ENV['LOGIN_NAME']
-ENV['LOGIN_PASSWORD']
-
 if Rails.env.production?
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address: 'smtp.gmail.com',
     domain: 'gmail.com',
     port: 587,
-    user_name: 'sprint1091.to@gmail.com',
-    password: 'niche911',
+    user_name: ENV['USRE_NAME'],
+    password: ENV['PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
