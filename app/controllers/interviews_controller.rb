@@ -1,6 +1,7 @@
 class InterviewsController < ApplicationController
   
   def index
+    @except_current_user = User.where.not(email: current_user.email)
     @user = User.find(params[:user_id])
     @interviews = Interview.where(user_id: params[:user_id])
     @approval_interview = Interview.where(user_id: params[:user_id]).find_by(propriety: 2)
@@ -66,6 +67,14 @@ class InterviewsController < ApplicationController
       flash[:danger] = "開始時間は未来の時間を指定してください"
       redirect_to controller: 'interviews', action: 'edit', user_id: params[:user_id], id: params[:interview_id]
     end
+  end
+  
+  def apply
+    @interviewer = User.find(params[:request_user][:request_user])
+    @user = User.find(current_user.id)
+    NotificationMailer.interview_request(@interviewer, @user).deliver
+    flash[:success] = "申請が完了しました"
+    redirect_to action: 'index', user_id: current_user.id
   end
   
   private
