@@ -46,7 +46,7 @@
 <%= form_for :request_user, url: apply_user_interviews_path(current_user) do |f| %>
   
   <div class="field">
-    <%= f.collection_select :request_user, @except_current_user, :id, :email %>
+    <%= f.collection_select :id, @except_current_user, :id, :email %>
   </div>
   
   <div class="actions">
