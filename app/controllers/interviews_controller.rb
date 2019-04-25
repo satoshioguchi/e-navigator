@@ -20,7 +20,6 @@ class InterviewsController < ApplicationController
   
   def create
     @interview = current_user.interviews.build(interview_params)
-    @interview.propriety = 3
     if @interview.save
       redirect_to user_interviews_path
     else
