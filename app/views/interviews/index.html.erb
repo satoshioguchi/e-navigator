@@ -17,7 +17,7 @@
         <% if @user == current_user %>
           <td class="btn-top-radius">
             <% if interview.propriety == "reservation" %>
-              <%= link_to '編集', edit_user_interview_path(@user, interview)%>
+              <%= link_to '編集', edit_user_interview_path(@user, interview) %>
             <% end%>
           </td>
           <td class="btn-top-radius">
