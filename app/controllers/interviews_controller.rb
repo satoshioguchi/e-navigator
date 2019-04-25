@@ -41,8 +41,7 @@ class InterviewsController < ApplicationController
   end
   
   def destroy
-    @interview = Interview.find_by(user_id: params[:user_id], id: params[:id])
-    @interview.destroy
+    Interview.find_by(id: params[:id]).destroy
     flash[:success] = "面接が削除されました"
     redirect_to controller: 'interviews', action: 'index'
   end
