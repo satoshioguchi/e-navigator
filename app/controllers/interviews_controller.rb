@@ -49,7 +49,7 @@ class InterviewsController < ApplicationController
   def approve
     @user = User.find(params[:user_id])
     @interviewer = User.find(current_user.id)
-    @interviews = Interview.where(user_id: params[:user_id])
+    @interviews = @user.interviews
     @interview = Interview.find_by(user_id: params[:user_id], id: params[:interview_id])
     if @interview.schedule > DateTime.now && @interview.update_attributes(propriety: 2)
       NotificationMailer.interview_decision(@user, @interviewer, @interview).deliver
