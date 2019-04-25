@@ -33,7 +33,7 @@ class InterviewsController < ApplicationController
   
   def update
     @interview = Interview.find_by(id: params[:id])
-    if @interview.update_attributes(interview_params)
+    if @interview.update(interview_params)
       redirect_to(user_interview_path, {:flash => { :error => "面接が更新されました" }})
     else
       render edit
