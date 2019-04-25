@@ -5,9 +5,9 @@ class NotificationMailer < ApplicationMailer
     @interviewer = interviewer
     @interview = interview
     mail(
-    from:    'test@example.com',
-    to:       "#{@user.email}, #{@interviewer.email}",
-    subject: '面接日時が確定しました'
+      from:    'test@example.com',
+      to:       "#{@user.email}, #{@interviewer.email}",
+      subject: '面接日時が確定しました'
     )
   end
   
@@ -15,9 +15,9 @@ class NotificationMailer < ApplicationMailer
     @interviewer = interviewer
     @user = user
     mail(
-    from:    'test@example.com',
-    to:       @interviewer.email,
-    subject: '面接希望日が決まりました'
+      from:    'test@example.com',
+      to:       @interviewer.email,
+      subject: '面接希望日が決まりました'
     )
   end
 end
