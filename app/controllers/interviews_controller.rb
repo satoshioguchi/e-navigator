@@ -11,7 +11,7 @@ class InterviewsController < ApplicationController
   end
   
   def show
-    @interview = Interview.find_by(user_id: params[:user_id], id: params[:id])
+    @interview = Interview.find_by(id: params[:id])
   end
 
   def new
