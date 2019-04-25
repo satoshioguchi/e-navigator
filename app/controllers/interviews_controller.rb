@@ -48,11 +48,10 @@ class InterviewsController < ApplicationController
   
   def approve
     @user = User.find(params[:user_id])
-    @interviewer = User.find(current_user.id)
     @interviews = @user.interviews
     @interview = Interview.find_by(id: params[:interview_id])
     if @interview.schedule > Time.current && @interview.approval!
-      NotificationMailer.interview_decision(@user, @interviewer, @interview).deliver
+      NotificationMailer.interview_decision(@user, current_user, @interview).deliver
       @interviews.each do |interview|
         if @interview != interview
           interview.reject!
