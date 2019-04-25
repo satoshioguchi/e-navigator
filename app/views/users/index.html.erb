@@ -31,7 +31,7 @@
              </td>
              <td>
                <% user.interviews.each do |interview| %>
-                 <% if interview.propriety == "承認" %>
+                 <% if interview.propriety == "approval" %>
                    <%= interview.schedule.strftime("%Y年%m月%d日 %H時%M分") %>
                  <% end %>
                <% end %>
