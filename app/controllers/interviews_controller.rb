@@ -66,7 +66,7 @@ class InterviewsController < ApplicationController
   end
   
   def apply
-    @interviewer = User.find(params[:request_user][:request_user])
+    @interviewer = User.find(params[:request_user][:id])
     @user = User.find(current_user.id)
     NotificationMailer.interview_request(@interviewer, @user).deliver
     flash[:success] = "申請が完了しました"
