@@ -3,7 +3,7 @@ class InterviewsController < ApplicationController
   def index
     @except_current_user = User.where.not(id: current_user.id)
     @user = User.find(params[:user_id])
-    @interviews = Interview.where(user_id: params[:user_id])
+    @interviews = @user.interviews
     @approval_interview = Interview.where(user_id: params[:user_id]).find_by(propriety: 2)
     if current_user.id != @user.id
       render "other_user_interview_schedule"
