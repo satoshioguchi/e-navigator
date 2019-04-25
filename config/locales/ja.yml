@@ -1,0 +1,7 @@
+ja:
+  enums:
+    user:
+      propriety:
+        reject: 却下
+        approval: 承認
+        reservation: 保留
