@@ -34,8 +34,7 @@ class InterviewsController < ApplicationController
   def update
     @interview = Interview.find_by(id: params[:id])
     if @interview.update_attributes(interview_params)
-      flash[:success] = "面接が更新されました"
-      redirect_to controller: 'interviews', action: 'show'
+      redirect_to(user_interview_path, {:flash => { :error => "面接が更新されました" }})
     else
       render edit
     end
