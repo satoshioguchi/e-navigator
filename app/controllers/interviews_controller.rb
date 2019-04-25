@@ -48,15 +48,10 @@ class InterviewsController < ApplicationController
   
   def approve
     @user = User.find(params[:user_id])
-    @interviews = @user.interviews
     @interview = Interview.find_by(id: params[:interview_id])
     if @interview.schedule > Time.current && @interview.approval!
       NotificationMailer.interview_decision(@user, current_user, @interview).deliver
-      @interviews.each do |interview|
-        if @interview != interview
-          interview.reject!
-        end
-      end
+      Interview.where.not(id: params[:interview_id]).update_all(propriety: 1)
       flash[:success] = "面接が更新されました"
       redirect_to controller: 'interviews', action: 'show', user_id: params[:user_id], id: params[:interview_id]
     else
