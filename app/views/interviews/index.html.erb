@@ -16,12 +16,12 @@
         </td>
         <% if @user == current_user %>
           <td class="btn-top-radius">
-            <% if interview.propriety == "保留" %>
+            <% if interview.propriety == "reservation" %>
               <%= link_to '編集', edit_user_interview_path(@user, interview)%>
             <% end%>
           </td>
           <td class="btn-top-radius">
-            <% if interview.propriety == "保留" %>
+            <% if interview.propriety == "reservation" %>
               <%= link_to '削除', user_interview_path(@user, interview), method: :delete,
               data: { confirm: '本当に削除しますか？' } %>
             <% end %>
