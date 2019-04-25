@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190330114625) do
+ActiveRecord::Schema.define(version: 20190425112315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "interviews", force: :cascade do |t|
     t.datetime "schedule"
-    t.integer "propriety"
+    t.integer "propriety", default: 3
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
