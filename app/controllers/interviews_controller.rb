@@ -51,11 +51,11 @@ class InterviewsController < ApplicationController
     @interviewer = User.find(current_user.id)
     @interviews = @user.interviews
     @interview = Interview.find_by(id: params[:interview_id])
-    if @interview.schedule > DateTime.now && @interview.update_attributes(propriety: 2)
+    if @interview.schedule > Time.current && @interview.approval!
       NotificationMailer.interview_decision(@user, @interviewer, @interview).deliver
       @interviews.each do |interview|
         if @interview != interview
-          interview.update_attributes(propriety: 1)
+          interview.reject!
         end
       end
       flash[:success] = "面接が更新されました"
